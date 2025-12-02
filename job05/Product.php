@@ -1,13 +1,3 @@
-<!-- Job 05
-Avec votre nouvelle instance de la classe, vous avez récupéré l’id de la category, mais
-vous n’avez pas accès à l’entièreté de ses informations (ce qui, il faut se l’avouer, n’est
-pas très pratique).
-Dans votre classe Product, faites une méthode publique getCategory(). Cette méthode
-ne prend aucun paramètre, et devra retourner une instance de la catégorie associée au
-produit en utilisant l’id_category en propriété de la classe.
-Une fois la méthode fonctionnelle, dans votre fichier index.php, récupérer la catégorie
-associée au produit avec l’id 7. -->
-
 <?php
 require_once 'category.php';
 
@@ -23,6 +13,13 @@ class Product
     private DateTime $createdAt;
     private DateTime $updatedAt;
     private $category_id;
+
+    private static ?\PDO $pdo = null;
+
+    public static function setPdo(\PDO $pdo): void
+    {
+        self::$pdo = $pdo;
+    }
 
     public function __construct(
         int $id = 0,
@@ -94,15 +91,20 @@ class Product
 
     public function getCategory(): ?Category
     {
+        $stmt = $this->pdo->prepare("SELECT * FROM category WHERE id = :id");
+        $stmt->execute(['id' => $this->category_id]);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-Avec votre nouvelle instance de la classe, vous avez récupéré l’id de la category, mais
-vous n’avez pas accès à l’entièreté de ses informations (ce qui, il faut se l’avouer, n’est
-pas très pratique).
-Dans votre classe Product, faites une méthode publique getCategory(). Cette méthode
-ne prend aucun paramètre, et devra retourner une instance de la catégorie associée au
-produit en utilisant l’id_category en propriété de la classe.
-Une fois la méthode fonctionnelle, dans votre fichier index.php, récupérer la catégorie
-associée au produit avec l’id 7. -->  
+        if ($data) {
+            return new Category(
+                $data['id'],
+                $data['name'],
+                $data['description'],
+                new DateTime($data['createdAt']),
+                new DateTime($data['updatedAt'])
+            );
+        }
+        return null;
     }
 
     // == SETTERS == //
