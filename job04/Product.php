@@ -1,8 +1,12 @@
-<!-- Job 03.1
-Il n’est pas toujours pratique de devoir remplir tous les paramètres d’un constructeur
-lorsqu’on instancie un nouvel objet pour pouvoir accéder aux méthodes de celui-ci.
-Pour contourner ce problème, rendez tous les paramètres de votre constructeur
-optionnel. Les deux façons suivantes d’instancier une classe devraient fonctionner : [voir image du PDF] -->
+<!-- Job 04
+Une fois que vous avez des lignes dans votre base de données, créez un fichier
+index.php si vous ne l’avez pas déjà fait. À l’intérieur de votre fichier, faites une requête
+auprès de votre base de données afin de récupérer le produit avec l’id 7, sous forme
+d’un tableau associatif.
+Créez une nouvelle instance de la classe Product, et à l’aide des données présentes à
+l’intérieur du tableau associatif, hydratez votre instance avec ces données.
+Félicitations, vous venez de créer votre première instance de classe avec des données
+de base de données ! Maintenant, essayons d’aller un peu plus loin… -->
 
 <?php
 

@@ -1,10 +1,15 @@
-<!-- Job 03.1
-Il n’est pas toujours pratique de devoir remplir tous les paramètres d’un constructeur
-lorsqu’on instancie un nouvel objet pour pouvoir accéder aux méthodes de celui-ci.
-Pour contourner ce problème, rendez tous les paramètres de votre constructeur
-optionnel. Les deux façons suivantes d’instancier une classe devraient fonctionner : [voir image du PDF] -->
+<!-- Job 05
+Avec votre nouvelle instance de la classe, vous avez récupéré l’id de la category, mais
+vous n’avez pas accès à l’entièreté de ses informations (ce qui, il faut se l’avouer, n’est
+pas très pratique).
+Dans votre classe Product, faites une méthode publique getCategory(). Cette méthode
+ne prend aucun paramètre, et devra retourner une instance de la catégorie associée au
+produit en utilisant l’id_category en propriété de la classe.
+Une fois la méthode fonctionnelle, dans votre fichier index.php, récupérer la catégorie
+associée au produit avec l’id 7. -->
 
 <?php
+require_once 'category.php';
 
 class Product
 {
@@ -85,6 +90,19 @@ class Product
     public function getCategory_id(): int
     {
         return $this->category_id;
+    }
+
+    public function getCategory(): ?Category
+    {
+
+Avec votre nouvelle instance de la classe, vous avez récupéré l’id de la category, mais
+vous n’avez pas accès à l’entièreté de ses informations (ce qui, il faut se l’avouer, n’est
+pas très pratique).
+Dans votre classe Product, faites une méthode publique getCategory(). Cette méthode
+ne prend aucun paramètre, et devra retourner une instance de la catégorie associée au
+produit en utilisant l’id_category en propriété de la classe.
+Une fois la méthode fonctionnelle, dans votre fichier index.php, récupérer la catégorie
+associée au produit avec l’id 7. -->  
     }
 
     // == SETTERS == //

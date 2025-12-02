@@ -1,26 +1,17 @@
-<!-- Job 01
-
-Nous allons prendre un exemple réaliste afin de coller au mieux à ce que vous pourriez
-rencontrer dans une application. Pour cela, nous allons commencer par créer une
-classe Product, permettant de représenter par exemple un produit dans une boutique.
-Cette classe aura les propriétés privées suivantes :
+<!-- Job 02
+Évidemment, dans une boutique en ligne, nous n’avons pas que des produits. Il y a aussi
+des catégories auxquels sont associés ces produits.
+Créez une classe Category, avec les propriétés privées suivantes et les getters et
+setters associés :
 - id : un entier naturel
-- name : une chaîne de caractères
-- photos : un tableau de chaînes de caractères
-- price : un entier naturel
-- description : une chaîne de caractères
-- quantity : un entier naturel
+- name : une chaine de caractère
+- description : une chaine de caractère
 - createdAt : une instance d’un objet DateTime
 - updatedAt : une instance d’un objet DateTime
-Créez ensuite les getters et les setters associés à cette classe. Pour rappel, les getters
-d’une classe permettent d’accéder à des propriétés privées en dehors de la classe et les
-setters permettent de modifier les valeurs de ces propriétés.
-Faites en sorte d’initialiser les propriétés de votre classe avec le constructeur de
-celle-ci. Par exemple :
-
-Une fois votre classe instanciée, vous pouvez récupérer les propriétés grâce à vos
-getters, vérifier leurs valeurs, et les modifier avec vos setters. Utiliser la fonction
-var_dump() pour faire vos tests, par exemple dans un fichier index.php.-->
+Ajoutez maintenant dans votre class Product un champ category_id, permettant de
+stocker un id de la classe Category, avec les setters et getters associés. Comme pour
+les produits, les propriétés des catégories doivent pouvoir être initialisées via le
+constructeur à l’instanciation de la classe. -->
 
 <?php
 
