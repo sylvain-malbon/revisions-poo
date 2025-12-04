@@ -91,10 +91,7 @@ class Product
 
     public function getCategory(): ?Category
     {
-        if (!self::$pdo) {
-            throw new Exception('PDO instance not set.');
-        }
-        $stmt = self::$pdo->prepare("SELECT * FROM category WHERE id = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM category WHERE id = :id");
         $stmt->execute(['id' => $this->category_id]);
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -158,29 +155,30 @@ class Product
 
     // méthode publique findOneById(int $id)
 
-    public static function findOneById(int $id)
-    {
-        if (!self::$pdo) {
-            throw new Exception('PDO instance not set.');
-        }
-
-        $stmt = self::$pdo->prepare("SELECT * FROM product WHERE id = :id");
-        $stmt->execute(['id' => $id]);
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($data) {
-            return new self(
-                $data['id'],
-                $data['name'],
-                json_decode($data['photos'], true) ?? [],
-                $data['price'],
-                $data['description'],
-                $data['quantity'],
-                new DateTime($data['createdAt']),
-                new DateTime($data['updatedAt']),
-                $data['category_id']
-            );
-        }
-        return false;
+public static function findOneById(int $id)
+{
+    if (!self::$pdo) {
+        throw new Exception('PDO instance not set.');
     }
+
+    $stmt = self::$pdo->prepare("SELECT * FROM product WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($data) {
+        return new self(
+            $data['id'],
+            $data['name'],
+            json_decode($data['photos'], true) ?? [],
+            $data['price'],
+            $data['description'],
+            $data['quantity'],
+            new DateTime($data['createdAt']),
+            new DateTime($data['updatedAt']),
+            $data['category_id']
+        );
+    }
+    return false;
+}
+
 }
