@@ -1,10 +1,10 @@
-<!-- Job 13
-Maintenant que nous avons un moyen de représenter nos différents types de produits
-dans notre application, notre classe Product ne devrait à priori pas être instanciée
-puisqu’elle est étendue dans nos types de produits (Clothing et Electronic).
-Afin de verrouiller ce comportement pour de bon, nous pouvons transformer notre
-classe Product en classe abstraite AbstractProduct.
-Transformer ainsi certaines méthodes de la classe Product en méthodes abstraites. -->
+<!-- Job 14
+Vous avez deux classes qui vous permettent de représenter des produits dans votre
+application. Il vous manque en revanche un moyen de gérer les stocks de chacun de vos
+articles.
+Créez une SockableInterface avec les méthodes addStocks(int $stock): self et
+removeStocks(int $stock): self. Implémentez ensuite cette interface dans vos classes
+Clothing et Electronic. -->
 
 <?php
 require_once 'AbstractProduct.php';
